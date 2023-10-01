@@ -11,3 +11,4 @@ dist/
 .env
 .now
 wooConfig.js
+client-config.js

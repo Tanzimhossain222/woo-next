@@ -10,3 +10,5 @@ dist/
 .next
 .env
 .now
+wooConfig.js
+clientConfig.js

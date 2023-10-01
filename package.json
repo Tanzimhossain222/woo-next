@@ -1,0 +1,16 @@
+{
+  "name": "woo-next",
+  "version": "1.0.0",
+  "description": "This is wooCommerce REST API ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tanzim",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^13.5.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

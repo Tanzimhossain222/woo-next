@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import { ApolloClient } from 'apollo-boost';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
-import clientConfig from '../client-config';
+import clientConfig from '../clientConfig';
 
 /**
  * Create Apollo Client instance for GraphQL queries

@@ -1,9 +1,10 @@
+import Link from "next/link"
 const Nav = () => {
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">WooNext</a>
+                   <Link href="/" className="navbar-brand">WooNext</Link>
                    
                     <div className="collapse navbar-collapse" id="navbarColor01">
                         <ul className="navbar-nav me-auto">

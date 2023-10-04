@@ -33,7 +33,7 @@ const Index = (props) => {
  */
 Index.getInitialProps = async () => {
   const result = await client.query({
-    query: PRODUCT_QUERY
+    query: PRODUCT_QUERY,
   })
 
   return {

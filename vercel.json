@@ -1,0 +1,11 @@
+{
+  "name": "Woo-next",
+  "alias": "woo-next",
+  "description": "WooCommerce Next.js - The open source headless commerce solution built for WordPress.",
+  "routes": [
+    {
+      "src": "/product/(?<slug>[^/]+)$",
+      "dest": "/product?slug=$slug"
+    }
+  ]
+}

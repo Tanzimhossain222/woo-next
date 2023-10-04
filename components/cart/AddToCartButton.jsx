@@ -1,35 +1,59 @@
-import { useState, useContext } from "react";
+import { useState, useContext } from 'react';
+import { AppContext } from "../../context/AppContext";
+import { addFirstProduct, updateCart } from "../../functions";
+import Link from 'next/link';
+const AddToCartButton = ( props ) => {
 
-import Link from "next/link"
-import { AppContext } from "@/context/AppContext";
-import { addFirstProduct } from "@/functions";
+	const { product } = props;
+	const [ cart, setCart ] = useContext( AppContext );
+	const [ showViewCart, setShowViewCart ] = useState( false );
 
-const AddToCartButton = (props) => {
-    const { product } = props;
-    const [cart, setCart] = useState(AppContext);
+	/**
+	 * Handles adding items to the cart.
+	 *
+	 * @return {void}
+	 */
+	const handleAddToCartClick = () => {
 
-    const handleAddCart =()=>{
-       if(process.browser) {
-        let existingCart = JSON.parse(localStorage.getItem('woo-next-cart'));
+		// If component is rendered client side.
+		if ( process.browser ) {
 
-        // If cart has item(s) already, check if this product exists there or not
-        if(existingCart) {
+			let existingCart = localStorage.getItem( 'woo-next-cart' );
 
-        }else {
-            /**
-             * If No Items in the cart, create an empty array and add one.
-             */
-            const newCart = addFirstProduct(product);
-            setCart(newCart);
-        }
-       }
-    }
+			// If cart has item(s) already, update existing or add new item.
+			if ( existingCart ) {
 
-  return (
-    <>
-    <button className="btn btn-secondary" onClick={handleAddCart}>Add to cart</button>
-    </>
-  )
-}
+				existingCart = JSON.parse( existingCart );
 
-export default AddToCartButton
+				const qtyToBeAdded = 1;
+
+				const updatedCart = updateCart( existingCart, product, qtyToBeAdded );
+
+				setCart( updatedCart );
+
+			} else {
+				/**
+				 * If No Items in the cart, create an empty array and add one.
+				 * @type {Array}
+				 */
+				const newCart = addFirstProduct( product );
+				setCart( newCart );
+			}
+
+			// Show View Cart Button
+			setShowViewCart( true )
+		}
+	};
+
+	return(
+		<>
+			<button onClick={ handleAddToCartClick } className="btn btn-secondary">Add to cart</button>
+			{ showViewCart ? (
+				<Link href="/cart"><button className="woo-next-view-cart-btn btn btn-secondary">View Cart</button></Link>
+			) : '' }
+
+		</>
+	)
+};
+
+export default AddToCartButton;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { updateCart } from "@/functions";
+import { ToFixedNum } from "@/utils/functions";
 const CartItem = ({ item, setCart, handleRemoveItem }) => {
   const [productCount, setProductCount] = useState(item.qty);
   console.log(item);
@@ -28,7 +29,7 @@ const CartItem = ({ item, setCart, handleRemoveItem }) => {
         <th className="woo-next-cart-element woo-next-cart-el-close">
           <span
             className="woo-next-cart-close-icon"
-            onClick={(e) => handleRemoveItem(e)}
+            onClick={(e) => handleRemoveItem(e,item.productId)}
           >
             <i className="fa fa-times-circle" aria-hidden="true" />
           </span>
@@ -50,7 +51,7 @@ const CartItem = ({ item, setCart, handleRemoveItem }) => {
         <td className="woo-next-cart-element">{item.name}</td>
 
         {/* Product Price */}
-        <td className="woo-next-cart-element">{typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</td>
+        <td className="woo-next-cart-element">{ ToFixedNum(item.totalPrice) }</td>
 
         {/* Product Quantity */}
         <td className="woo-next-cart-element">
@@ -64,7 +65,7 @@ const CartItem = ({ item, setCart, handleRemoveItem }) => {
         </td>
 
         {/* Product Total Price */}
-        <td className="woo-next-cart-element">  {typeof item.totalPrice === 'number' ? item.totalPrice.toFixed(2) : item.totalPrice}</td>
+        <td className="woo-next-cart-element">  { ToFixedNum(item.totalPrice) }</td>
       </tr>
     </>
   );

@@ -1,6 +1,8 @@
 import { AppContext } from "@/context/AppContext";
 import { useContext, useEffect } from "react";
 import CartItem from "./CartItem";
+import { removeItemFromCart } from "@/functions";
+import { ToFixedNum } from "@/utils/functions";
 
 const CartItemsContainer = () => {
   const [cart, setCart] = useContext(AppContext);
@@ -16,9 +18,10 @@ const CartItemsContainer = () => {
   }, [cart]);
 
   // Handle Remove Item from Cart
-  const handleRemoveItem = (e) => {
-    // Todo update cart
-    console.log("handleRemoveItem");
+  const handleRemoveItem = (e,productId ) => {
+    const updatedCart = removeItemFromCart(productId);
+    setCart(updatedCart);
+
   };
 
   return (
@@ -52,11 +55,11 @@ const CartItemsContainer = () => {
                         <tbody>
                             <tr className="table-light">
                                 <td className="woo-next-cart-element-total">Subtotal</td>
-                                <td className="woo-next-cart-element-amt">{cart.totalProductsPrice}</td>
+                                <td className="woo-next-cart-element-amt">{ ToFixedNum(cart.totalProductsPrice) }  </td>
                             </tr>
                             <tr className="table-light">
                                 <td className="woo-next-cart-element-total">Total</td>
-                                <td className="woo-next-cart-element-amt">{cart.totalProductsPrice}</td>
+                                <td className="woo-next-cart-element-amt"> { ToFixedNum(cart.totalProductsPrice) } </td>
                             </tr>
                         </tbody>
                     </table>

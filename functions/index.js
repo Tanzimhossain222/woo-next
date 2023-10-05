@@ -13,7 +13,6 @@ export const getFloatVal = (string) => {
 	}
 	return '';
 };
-  
 
 
 /**
@@ -155,3 +154,47 @@ const isProductInCart = ( existingProductsInCart, productId ) => {
 
 	return existingProductsInCart.indexOf( newArray[0] );
 };
+
+
+/**
+ *  This function used to remove an item from the cart. 
+ * Need to pass the cart and product id to remove from the cart. 
+ * @param {Integer} productId 
+ * @returns {Object} Returns updated cart.
+ */
+export const removeItemFromCart = ( productId ) => {
+	// Get the existing cart data from local storage if any
+	let existingCart = localStorage.getItem('woo-next-cart' );
+	existingCart = JSON.parse( existingCart );
+
+	//if there is only one item in the cart, delete the cart.
+	if ( 1 === existingCart.products.length ) {
+		localStorage.removeItem( 'woo-next-cart' );
+		return null;
+	}
+
+	// Check if the product already exits in the cart.
+	const productExitsIndex = isProductInCart( existingCart.products, productId );
+
+	// If product to be removed exits
+	if ( -1 < productExitsIndex ) {
+		const productToBeRemoved = existingCart.products[ productExitsIndex ];
+		const qtyToBeRemovedFromTotal = productToBeRemoved.qty;
+		const priceToBeDeductedFromTotal = productToBeRemoved.totalPrice;
+
+		// Remove that product from the array and update the total price and total quantity of the cart
+		let updatedCart = existingCart;
+		updatedCart.products.splice( productExitsIndex, 1 );
+		updatedCart.totalProductsCount = updatedCart.totalProductsCount - qtyToBeRemovedFromTotal;
+		updatedCart.totalProductsPrice = updatedCart.totalProductsPrice - priceToBeDeductedFromTotal;
+
+
+		// Add to local storage.
+		localStorage.setItem( 'woo-next-cart', JSON.stringify( updatedCart ) );
+
+		return updatedCart;
+	} else {
+		return existingCart;
+	}
+
+}

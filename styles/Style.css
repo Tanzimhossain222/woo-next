@@ -11,6 +11,9 @@ a:hover {
 	align-items: center;
 	font-size: 20px;
 }
+.woo-next-branding a {
+	text-decoration: none;
+}
 
 /* Nav Menu */
 .woo-next-menu-container {
@@ -58,6 +61,9 @@ a:hover {
 .woo-next-cart-and-menu-btn {
 	display: flex;
 	align-items: center;
+}
+.woo-next-cart-and-menu-btn a {
+	text-decoration: none;
 }
 
 /* Cart Container */

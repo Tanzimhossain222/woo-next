@@ -36,7 +36,7 @@ const CartItem = ({ item, setCart, handleRemoveItem }) => {
         </th>
 
         {/* Product Image */}
-        <td className="woo-next cart-element">
+        <td className="woo-next-cart-element">
         {item.image && item.image.sourceUrl && (
             <img
               width="64"

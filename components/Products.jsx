@@ -5,7 +5,7 @@ const Product = (props) => {
   
   return (
     <>
-      <div className="card mb-3 ms-3">
+      <div className="card mb-3 ms-3 col-lg-3 col-md-6 col-sm-12">
         <h3 className="card-header text-center">{product.name} </h3>
         {/* as={`/product?${product.slug}-${product.productId}`} */} 
        <Link  href={`/product?slug=${product.slug}-${product.productId}`}>

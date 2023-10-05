@@ -1,29 +1,46 @@
 import Link from "next/link"
 import CartIcon from "./cart/CartIcon"
+import { useState } from "react";
+
 const Nav = () => {
-    return (
-        <>
-            <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-                <div className="container-fluid">
-                   <Link href="/" className="navbar-brand">WooNext</Link>
-                   
-                    <div className="collapse navbar-collapse" id="navbarColor01">
-                        <ul className="navbar-nav me-auto">
-                            <li className="nav-item">
-                                <a className="nav-link active" href="#"> Categories
-                                    <span className="visually-hidden">(current)</span>
-                                </a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">My Account</a>
-                            </li>
-                        </ul>
-                        <CartIcon />
-                    </div>
-                </div>
-            </nav>
-        </>
-    )
-}
+
+	const [ show, setDisplay ] = useState( false );
+
+	return (
+		<nav className="woo-next-menu-container navbar-dark bg-primary">
+			{/*Branding*/}
+			<div className="woo-next-branding">
+				<Link href="/" className=""> WooNext </Link>
+			</div>  	
+
+			{/*Navigation menu*/}
+			<div className={ `woo-next-sub-menu-wrap ${ show ? 'show' : '' }` } id="">
+				<ul className="navbar-nav">
+					<li className="nav-item">
+						<Link className="nav-link" href="#">Categories</Link>
+					</li>
+					<li className="nav-item">
+						<Link className="nav-link" href="#">My Account</Link>
+					</li>
+				</ul>
+			</div>
+
+		{/*	Cart and Menu button*/}
+		<div className="woo-next-cart-and-menu-btn">
+			{/*Cart Icon*/}
+			<div>
+				<CartIcon />
+			</div>
+			{/*Menu toggle button for mobile*/}
+			<button
+				onClick={ () => setDisplay( ! show ) }
+				className="woo-next-menu-btn" type="button" aria-label="Toggle navigation">
+				<span className="navbar-toggler-icon"></span>
+			</button>
+		</div>
+		</nav>
+	)
+};
+
 
 export default Nav

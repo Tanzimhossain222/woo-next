@@ -12,7 +12,7 @@ const Index = (props) => {
     <>
       <Layout>
         {products.length ?
-          <div className="product-container" >
+          <div className="product-container row" >
             {products.map(product => (
               <Product key={product.id} product={product} />
             ))}

@@ -26,7 +26,8 @@ const Product = (props) => {
     <Layout>
       {
         product ?
-          <div className="card bg-light mb-3 p-5" >
+        <div className="woo-next-single">
+          <div className="woo-next-single__product card bg-light mb-3 p-5" >
             <div className="card-header">{product.name}</div>
             <div className="card-body">
               <h4 className="card-title">{product.name}</h4>
@@ -34,7 +35,8 @@ const Product = (props) => {
               <div dangerouslySetInnerHTML={renderHTML(product.description)} />
             </div>
           </div>
-          : null
+          </div>
+          : ''
       }
     </Layout>
   )

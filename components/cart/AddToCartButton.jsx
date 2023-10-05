@@ -7,7 +7,6 @@ const AddToCartButton = ( props ) => {
 	const { product } = props;
 	const [ cart, setCart ] = useContext( AppContext );
 	const [ showViewCart, setShowViewCart ] = useState( false );
-
 	/**
 	 * Handles adding items to the cart.
 	 *

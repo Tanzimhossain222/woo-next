@@ -8,18 +8,17 @@ export const AppContext  = React.createContext([
 
 
 export const AppProvider = (props) => {
-    const [cart, setCart] = useState(null);
+    const [cart, setCart] = useState({});
 
-    useEffect(()=>{
-        if(process.browser) {
-            let cardData = localStorage.getItem('woo-next-cart');
-            cardData = null !== cardData ? JSON.parse(cardData) : '';
-            
-            // if(null !== cardData && '' !== cardData) {
-            //     setCart(cardData);
-            // }
+    useEffect(() => {
+        if (process.browser) {
+          const cartData = localStorage.getItem('woo-next-cart');
+          if (cartData) {
+            setCart(JSON.parse(cartData));
+          }
         }
-    }, []);
+      }, []);
+      
 
     return (
         <AppContext.Provider value={[cart, setCart]}>

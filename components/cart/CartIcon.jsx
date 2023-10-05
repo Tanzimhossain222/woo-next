@@ -6,8 +6,7 @@ const CartIcon = () => {
 
 	const [ cart ] = useContext( AppContext );
 	const productsCount = ( null !== cart && Object.keys( cart ).length ) ? cart.totalProductsCount : '';
-	const totalPrice = ( null !== cart && Object.keys( cart ).length ) ? cart.totalProductsPrice : '';
-
+	const totalPrice = ( null !== cart && Object.keys( cart ).length ) ?  cart.totalProductsPrice : '';
 	return (
 		<>
 			<Link href="/cart">

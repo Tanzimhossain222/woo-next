@@ -1,4 +1,5 @@
 import Link from "next/link"
+import CartIcon from "./cart/CartIcon"
 const Nav = () => {
     return (
         <>
@@ -16,12 +17,8 @@ const Nav = () => {
                             <li className="nav-item">
                                 <a className="nav-link" href="#">My Account</a>
                             </li>
-                           
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">About</a>
-                            </li>
-                            
                         </ul>
+                        <CartIcon />
                     </div>
                 </div>
             </nav>

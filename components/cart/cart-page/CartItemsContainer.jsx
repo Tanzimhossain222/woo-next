@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import CartItem from "./CartItem";
 import { removeItemFromCart } from "@/functions";
 import { ToFixedNum } from "@/utils/functions";
+import Link from "next/link";
 
 const CartItemsContainer = () => {
   const [cart, setCart] = useContext(AppContext);
@@ -47,6 +48,7 @@ const CartItemsContainer = () => {
                 ))}
               </tbody>
             </table>
+
             {/* Cart Total */}
             <div className="row woo-next-cart-total-container mt-5">
                 <div className="col-6">
@@ -63,6 +65,15 @@ const CartItemsContainer = () => {
                             </tr>
                         </tbody>
                     </table>
+
+                    {/* Proceed to Checkout Button */}
+                    <Link href="/checkout">
+                        <button className="btn btn-secondary btn-md btn-block woo-next-large-black-btn">
+                           <span className="woo-next-cart-checkout">
+                           Proceed to Checkout
+                           </span>
+                        </button>
+                    </Link>
                 </div>
             </div>
           </div>

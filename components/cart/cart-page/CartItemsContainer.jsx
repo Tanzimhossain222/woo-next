@@ -15,6 +15,12 @@ const CartItemsContainer = () => {
     }
   }, [cart]);
 
+  // Handle Remove Item from Cart
+  const handleRemoveItem = (e) => {
+    // Todo update cart
+    console.log("handleRemoveItem");
+  };
+
   return (
     <>
       <>
@@ -34,7 +40,7 @@ const CartItemsContainer = () => {
               </thead>
               <tbody>
                 {cart.products.map((item) => (
-                  <CartItem key={item.productId} item={item} setCart={setCart} />
+                  <CartItem key={item.productId} item={item} setCart={setCart} handleRemoveItem={handleRemoveItem} />
                 ))}
               </tbody>
             </table>

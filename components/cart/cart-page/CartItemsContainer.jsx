@@ -44,6 +44,24 @@ const CartItemsContainer = () => {
                 ))}
               </tbody>
             </table>
+            {/* Cart Total */}
+            <div className="row woo-next-cart-total-container mt-5">
+                <div className="col-6">
+                    <h2>Cart Total</h2>
+                    <table className="table table-hover">
+                        <tbody>
+                            <tr className="table-light">
+                                <td className="woo-next-cart-element-total">Subtotal</td>
+                                <td className="woo-next-cart-element-amt">{cart.totalProductsPrice}</td>
+                            </tr>
+                            <tr className="table-light">
+                                <td className="woo-next-cart-element-total">Total</td>
+                                <td className="woo-next-cart-element-amt">{cart.totalProductsPrice}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
           </div>
         ) : (
           <p>Your cart is empty.</p>

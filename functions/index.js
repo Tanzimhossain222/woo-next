@@ -4,12 +4,16 @@
  * @param {string} string String
  * @return {any}
  */
-export const getFloatVal = ( string ) => {
-
-	let floatValue = string.match( /[+-]?\d+(\.\d+)?/g )[0];
-	return ( null !== floatValue ) ? parseFloat( parseFloat( floatValue ).toFixed( 2 ) ) : '';
-
+export const getFloatVal = (string) => {
+	if (typeof string === "string") {
+	  const floatValue = string.match(/[+-]?\d+(\.\d+)?/g);
+	  if (floatValue) {
+		return parseFloat(parseFloat(floatValue[0]).toFixed(2));
+	  }
+	}
+	return '';
 };
+  
 
 
 /**

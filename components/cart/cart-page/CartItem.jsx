@@ -1,15 +1,23 @@
 import { useState } from "react";
-
+import { updateCart } from "@/functions";
 const CartItem = ({ item, setCart, handleRemoveItem }) => {
   const [productCount, setProductCount] = useState(item.qty);
-
+  console.log(item);
   // Handle Quantity Input Change
   const handleProductChange = (e) => {
     if (process.browser) {
       let newQty = e.target.value;
       setProductCount(newQty);
 
-      //Todo Update cart
+      // Update this item's quantity in localStorage
+      let existingCart = localStorage.getItem("woo-next-cart");
+      existingCart = JSON.parse(existingCart);
+      
+      const updatedCart = updateCart(existingCart, item, false, newQty); // Update cart
+
+      // update Global Cart Context
+      setCart(updatedCart);
+
     }
   };
 
@@ -28,19 +36,21 @@ const CartItem = ({ item, setCart, handleRemoveItem }) => {
 
         {/* Product Image */}
         <td className="woo-next cart-element">
-          <img
-            width="64"
-            src={item.image.sourceUrl}
-            srcSet={item.image.setCart}
-            alt={item.image.title}
-          />
+        {item.image && item.image.sourceUrl && (
+            <img
+              width="64"
+              src={item.image.sourceUrl}
+              srcSet={item.image.srcSet}
+              alt={item.image.title}
+            />
+          )}
         </td>
 
         {/* Product Name */}
         <td className="woo-next-cart-element">{item.name}</td>
 
         {/* Product Price */}
-        <td className="woo-next-cart-element">{item.price.toFixed(2)}</td>
+        <td className="woo-next-cart-element">{typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</td>
 
         {/* Product Quantity */}
         <td className="woo-next-cart-element">
@@ -54,7 +64,7 @@ const CartItem = ({ item, setCart, handleRemoveItem }) => {
         </td>
 
         {/* Product Total Price */}
-        <td className="woo-next-cart-element">{item.totalPrice}</td>
+        <td className="woo-next-cart-element">  {typeof item.totalPrice === 'number' ? item.totalPrice.toFixed(2) : item.totalPrice}</td>
       </tr>
     </>
   );

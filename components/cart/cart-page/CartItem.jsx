@@ -3,7 +3,6 @@ import { updateCart } from "@/functions";
 import { ToFixedNum } from "@/utils/functions";
 const CartItem = ({ item, setCart, handleRemoveItem }) => {
   const [productCount, setProductCount] = useState(item.qty);
-  console.log(item);
   // Handle Quantity Input Change
   const handleProductChange = (e) => {
     if (process.browser) {

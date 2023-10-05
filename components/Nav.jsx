@@ -17,7 +17,7 @@ const Nav = () => {
 			<div className={ `woo-next-sub-menu-wrap ${ show ? 'show' : '' }` } id="">
 				<ul className="navbar-nav">
 					<li className="nav-item">
-						<Link className="nav-link" href="#">Categories</Link>
+						<Link className="nav-link" href="/categories">Categories</Link>
 					</li>
 					<li className="nav-item">
 						<Link className="nav-link" href="#">My Account</Link>

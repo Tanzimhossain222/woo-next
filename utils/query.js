@@ -122,22 +122,26 @@ query GetProductsByCategory($id: ID!) {
           ... on VariableProduct {
             id
             name
-            productId
+            price
+         productId
           }
           ... on ExternalProduct {
             id
             name
+            price
             productId
           }
           ... on GroupProduct {
             id
             name
+            price
             productId
           }
           ... on SimpleProduct {
             id
             name
-             productId
+            price
+            productId
           }
         }
       }

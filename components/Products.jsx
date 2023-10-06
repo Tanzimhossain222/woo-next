@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import AddToCartButton from './cart/AddToCartButton';
 const Product = (props) => {
-console.log(props);
   const { product } = props;
   return (
     <>
-      <div className=" col-lg-3 col-md-6 col-sm-12">
+      <div className="card mb-3  col-lg-3 col-md-6 col-sm-12">
         <h3 className="card-header text-center">{product.name} </h3>
         {/* as={`/product?${product.slug}-${product.productId}`} */} 
        <Link  href={`/product?slug=${product.slug}-${product.productId}`}>

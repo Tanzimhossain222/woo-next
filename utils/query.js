@@ -6,7 +6,7 @@ query {
     nodes {
       id
       name
-   
+      type
       ... on SimpleProduct {
       id
       name
@@ -39,6 +39,16 @@ query {
         name
         price
         productId
+        products{
+          nodes{
+            ... on SimpleProduct{
+              price
+            }
+            ... on VariableProduct{
+              price
+            }
+          }
+        }
       }
       ... on SimpleProductVariation {
         id
@@ -55,6 +65,7 @@ query GetProduct($productId: ID!) {
   product(idType: DATABASE_ID, id: $productId) {
     id
     name
+    type
     slug
     description
     image {
@@ -80,6 +91,16 @@ query GetProduct($productId: ID!) {
       name
       price
       productId
+      products{
+        nodes{
+          ... on SimpleProduct{
+            price
+          }
+          ... on VariableProduct{
+            price
+          }
+        }
+      }
     }
   
   }
@@ -112,6 +133,7 @@ query GetProductsByCategory($id: ID!) {
           id
           name
           slug
+          type
           description
           image {
             srcSet
@@ -136,6 +158,16 @@ query GetProductsByCategory($id: ID!) {
             name
             price
             productId
+            products{
+              nodes{
+                ... on SimpleProduct{
+                  price
+                }
+                ... on VariableProduct{
+                  price
+                }
+              }
+            }
           }
           ... on SimpleProduct {
             id

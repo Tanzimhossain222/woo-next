@@ -14,7 +14,7 @@ const { products, categoryName } = props;
   return (
     <Layout>
         {categoryName ? 
-        ( <h3 className='text-center'> {categoryName} </h3> ):''}
+        ( <h3 className='text-center y-3'> {categoryName} </h3> ):''}
         <div className="product-container row">
         { undefined !== products && products.length ? (
 					products.map( product => <Product key={ product.node.id } product={ product.node } /> )

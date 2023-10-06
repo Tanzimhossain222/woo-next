@@ -12,7 +12,7 @@ const Index = (props) => {
     <>
       <Layout>
         {products.length ?
-          <div className="product-container" >
+          <div className="product-container row" >
             {products.map(product => (
               <Product key={product.id} product={product} />
             ))}
@@ -33,7 +33,7 @@ const Index = (props) => {
  */
 Index.getInitialProps = async () => {
   const result = await client.query({
-    query: PRODUCT_QUERY
+    query: PRODUCT_QUERY,
   })
 
   return {

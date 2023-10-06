@@ -33,3 +33,10 @@ Woo-Next is a React WooCommerce theme built with Next.js, Node.js, and GraphQL. 
 - Efficient data fetching with GraphQL and Apollo Client.
 - Integration with WooCommerce for seamless e-commerce functionality.
 
+## Cart Page Functionality
+
+Recently, we added a cart page with the following features:
+
+- The ability to add and remove items from the cart.
+- Real-time updates of cart contents.
+- Smooth and responsive user experience for managing items in the cart.
